@@ -60,6 +60,7 @@ cfg.model.optimizer = CN()
 cfg.model.optimizer.name = 'Adam'               # Optimizer name
 cfg.model.optimizer.depth = CN()
 cfg.model.optimizer.depth.lr = 0.0002           # Depth learning rate
+cfg.model.optimizer.depth.betas = (0.9,0.999)
 cfg.model.optimizer.depth.weight_decay = 0.0    # Dept weight decay
 cfg.model.optimizer.pose = CN()
 cfg.model.optimizer.pose.lr = 0.0002            # Pose learning rate
