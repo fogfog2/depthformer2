@@ -4,7 +4,7 @@ import torch.nn as nn
 from functools import partial
 
 from packnet_sfm.networks.layers.resnet.resnet_encoder_h import ResnetEncoder
-from packnet_sfm.networks.depth.cmt_origin_cascade_h import CMT, CMT_Ti,CMT_XS, CMT_B
+from packnet_sfm.networks.depth.cmt_origin_cascade_h import CMT, CMT_Ti,CMT_XS, CMT_XS2, CMT_B
 from packnet_sfm.networks.layers.resnet.depth_decoder import DepthDecoder
 from packnet_sfm.networks.layers.resnet.layers import disp_to_depth
 
@@ -51,13 +51,19 @@ class DepthResNetCMT(nn.Module):
         # self.embed_dim= 46    
         # self.in_channels=[self.embed_dim, self.embed_dim *2 , self.embed_dim*4, self.embed_dim * 8]      
         # self.de_channels=[64, 64 , self.embed_dim *2 , self.embed_dim*4, self.embed_dim * 8]      
-        #self.cmt = CMT_Ti(in_channels = 3, input_size = 256, embed_dim= self.embed_dim, stem_channels= self.stem_channel)
+        # self.cmt = CMT_Ti(in_channels = 3, input_size = 256, embed_dim= self.embed_dim, stem_channels= self.stem_channel)
+
+        # self.stem_channel = 64
+        # self.embed_dim= 52    
+        # self.in_channels=[self.embed_dim, self.embed_dim *2 , self.embed_dim*4, self.embed_dim * 8]      
+        # self.de_channels=[64, 64 , self.embed_dim *2 , self.embed_dim*4, self.embed_dim * 8]      
+        # self.cmt = CMT_XS(in_channels = 3, input_size = 256, embed_dim= self.embed_dim)
 
         self.stem_channel = 64
         self.embed_dim= 52    
         self.in_channels=[self.embed_dim, self.embed_dim *2 , self.embed_dim*4, self.embed_dim * 8]      
         self.de_channels=[64, 64 , self.embed_dim *2 , self.embed_dim*4, self.embed_dim * 8]      
-        self.cmt = CMT_XS(in_channels = 3, input_size = 256, embed_dim= self.embed_dim)
+        self.cmt = CMT_XS2(in_channels = 3, input_size = 256, embed_dim= self.embed_dim)
 
         # self.stem_channel = 64
         # self.embed_dim= 76    

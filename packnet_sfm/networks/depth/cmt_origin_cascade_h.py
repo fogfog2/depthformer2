@@ -269,7 +269,32 @@ class CMT_XS(t.nn.Module):
         x = self.cmt_xs(x)
 
         return x
+# 2. CMT-XS
+class CMT_XS2(t.nn.Module):
+    """Define CMT-XS model"""
 
+    def __init__(self, in_channels = 3, input_size = 224,embed_dim = 52):
+        """
+        Args :
+            --in_channels: default is 3
+            --input_size: default is 224
+            --num_classes: default is 1000 for ImageNet
+        """
+        super(CMT_XS2, self).__init__()
+
+        self.cmt_xs = CMT(in_channels = in_channels,
+                          stem_channels = 16,
+                          cmt_channelses = [embed_dim, embed_dim *2 , embed_dim*4, embed_dim * 8],
+                          pa_channelses = [embed_dim, embed_dim *2 , embed_dim*4, embed_dim * 8],
+                          R = 3.8,
+                          repeats = [4, 4, 4, 4],
+                          input_size = input_size)
+
+    def forward(self, x):
+
+        x = self.cmt_xs(x)
+
+        return x
 
 # 3. CMT-S
 class CMT_S(t.nn.Module):
