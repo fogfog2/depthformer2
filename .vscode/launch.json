@@ -20,6 +20,8 @@
             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet.yaml"]
 
+            //"program": "${workspaceFolder}/scripts/flops.py"       
+
         }
     ]
 }
