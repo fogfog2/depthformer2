@@ -8,14 +8,16 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "env": {"PYTHONPATH": "${cwd}" },
             // "program": "${workspaceFolder}/scripts/eval.py",             
             // "args": ["--checkpoint=/home/sj/Downloads/ResNet18_MR_selfsup_K.ckpt",
             // "--config=/home/sj/src/depthformer2/configs/eval_kitti.yaml"]
 
 
             "program": "${workspaceFolder}/scripts/train.py",             
-            //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H.yaml"]
-            "args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
+            "args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H.yaml"]
+            //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet.yaml"]
 
         }

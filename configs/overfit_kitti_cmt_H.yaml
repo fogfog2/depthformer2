@@ -18,7 +18,7 @@ model:
         step_size: 30
         gamma: 0.5
     depth_net:
-        name: 'DepthResNetCMT'
+        name: 'DepthResNetCMT2'
         version: '18pt'
     pose_net:
         name: 'PoseResNet'
