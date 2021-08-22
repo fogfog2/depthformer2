@@ -74,7 +74,7 @@ class DepthResNetCMT(nn.Module):
        
 
 
-        self.upconv = fcconv(64,self.embed_dim)
+        self.upconv = fcconv(self.resnet_encoder.num_ch_enc[1],self.embed_dim)
         self.decoder = DepthDecoder(num_ch_enc=self.de_channels)
         self.scale_inv_depth = partial(disp_to_depth, min_depth=0.1, max_depth=100.0)
 

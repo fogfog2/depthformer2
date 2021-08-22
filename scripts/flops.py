@@ -15,7 +15,7 @@ with torch.cuda.device(0):
   #net = DepthResNet(version="18pt")
   #net = DepthResNetSwin(version="18pt")
 
-  net = DepthResNetCMT(version="18pt")
+  #net = DepthResNetCMT(version="50pt")
 
 
   macs, params = get_model_complexity_info(net, (3, 192, 640), as_strings=True,
