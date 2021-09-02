@@ -20,7 +20,7 @@ cfg.arch.validate_first = False         # Validate before training starts
 ### CHECKPOINT
 ########################################################################################################################
 cfg.checkpoint = CN()
-cfg.checkpoint.filepath = ''            # Checkpoint filepath to save data
+cfg.checkpoint.filepath = 'result'            # Checkpoint filepath to save data
 cfg.checkpoint.save_top_k = 5           # Number of best models to save
 cfg.checkpoint.monitor = 'loss'         # Metric to monitor for logging
 cfg.checkpoint.monitor_index = 0        # Dataset index for the metric to monitor

@@ -58,8 +58,8 @@ class CMT(t.nn.Module):
         #     sizes = [72, 36, 18, 9]
         # else:
         #     raise Exception('No other input sizes!')
-        input_width = 640
-        input_height = 192
+        input_width = 256
+        input_height = 256
 
 
         widths = [int(input_width/4), int(input_width/8), int(input_width/16), int(input_width/32)]
@@ -73,8 +73,8 @@ class CMT(t.nn.Module):
         # 2. Patch Aggregation 1
         #self.pa1 = PatchAggregation(in_channels = stem_channels, out_channels = pa_channelses[0], kernel_size=3, stride = 1, padding = 1)
         #self.pa1 = PatchAggregation(in_channels = stem_channels, out_channels = pa_channelses[0], kernel_size=2, stride = 2, padding = 0)
-        self.pa2 = PatchAggregation(in_channels = cmt_channelses[0], out_channels = pa_channelses[1])
-        self.pa3 = PatchAggregation(in_channels = cmt_channelses[1], out_channels = pa_channelses[2])
+        #self.pa2 = PatchAggregation(in_channels = cmt_channelses[0], out_channels = pa_channelses[1])
+        self.pa3 = PatchAggregation(in_channels = 128, out_channels = pa_channelses[2])
         self.pa4 = PatchAggregation(in_channels = cmt_channelses[2], out_channels = pa_channelses[3])
 
         # 3. CMT block
@@ -171,17 +171,17 @@ class CMT(t.nn.Module):
         # self.features.append(x_out)
 
         # 3. PA2 + CMTb2
-        x_pa2 = self.pa2(x)
-        x_cmtb2 = self.cmt2(x_pa2)
+        # x_pa2 = self.pa2(x)
+        # x_cmtb2 = self.cmt2(x_pa2)
         
-        norm_layer = getattr(self, f'norm1')
-        x_out = x_cmtb2.permute(0, 3, 2, 1).contiguous()
-        x_out = norm_layer(x_out)
-        x_out = x_out.permute(0, 3, 2, 1).contiguous()
-        self.features.append(x_out)
+        # norm_layer = getattr(self, f'norm1')
+        # x_out = x_cmtb2.permute(0, 3, 2, 1).contiguous()
+        # x_out = norm_layer(x_out)
+        # x_out = x_out.permute(0, 3, 2, 1).contiguous()
+        # self.features.append(x_out)
         
         # 4. PA3 + CMTb3
-        x_pa3 = self.pa3(x_cmtb2)
+        x_pa3 = self.pa3(x)
         x_cmtb3 = self.cmt3(x_pa3)
         
         norm_layer = getattr(self, f'norm2')
