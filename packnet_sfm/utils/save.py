@@ -26,6 +26,7 @@ def save_depth(batch, output, args, dataset, save):
         Save configuration
     """
     # If there is no save folder, don't save
+    save.folder= 'depth'
     if save.folder is '':
         return
 
@@ -46,6 +47,10 @@ def save_depth(batch, output, args, dataset, save):
 
         # For each image in the batch
         length = rgb.shape[0]
+        save.depth.npz=False
+        save.depth.rgb=False
+        save.depth.viz=False
+        
         for i in range(length):
             # Save numpy depth maps
             if save.depth.npz:

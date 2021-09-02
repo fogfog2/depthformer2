@@ -31,12 +31,12 @@ cfg.checkpoint.s3_frequency = 1         # How often to s3 sync
 ### SAVE
 ########################################################################################################################
 cfg.save = CN()
-cfg.save.folder = ''                    # Folder where data will be saved
+cfg.save.folder = 'depth'                    # Folder where data will be saved
 cfg.save.depth = CN()
-cfg.save.depth.rgb = True               # Flag for saving rgb images
+cfg.save.depth.rgb = False               # Flag for saving rgb images
 cfg.save.depth.viz = True               # Flag for saving inverse depth map visualization
-cfg.save.depth.npz = True               # Flag for saving numpy depth maps
-cfg.save.depth.png = True               # Flag for saving png depth maps
+cfg.save.depth.npz = False               # Flag for saving numpy depth maps
+cfg.save.depth.png = False               # Flag for saving png depth maps
 ########################################################################################################################
 ### WANDB
 ########################################################################################################################
