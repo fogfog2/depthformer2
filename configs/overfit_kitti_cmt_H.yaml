@@ -19,7 +19,7 @@ model:
         gamma: 0.5
     depth_net:
         name: 'DepthResNetCMT'
-        version: '50pt'
+        version: '18pt'
     pose_net:
         name: 'PoseResNet'
         version: '18pt'
