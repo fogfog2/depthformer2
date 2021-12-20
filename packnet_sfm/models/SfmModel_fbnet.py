@@ -105,8 +105,14 @@ class SfmModel(BaseModel):
             Dictionary with depth network output (e.g. 'inv_depths' and 'uncertainty')
         """
         # Which keys are being passed to the depth network
+        
         batch_input = {key: batch[key] for key in filter_dict(batch, self._input_keys)}
-        batch_input['rgb']  = torch.cat([ batch_input['rgb'] , disp['inv_depths'][0] ] , 1)
+
+        if self.training:
+            batch_input['rgb']  = torch.cat([ batch_input['rgb'] , disp['inv_depths'][0] ] , 1)
+        else:
+            batch_input['rgb']  = torch.cat([ batch_input['rgb'] , disp['inv_depths'] ] , 1)
+
         if flip:
             # Run depth network with flipped inputs
             
