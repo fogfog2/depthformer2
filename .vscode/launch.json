@@ -14,21 +14,21 @@
             //  "args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_kitti_cmt_H-2021.12.20-00h43m09s/epoch=18_kitti-eigen_val_files-velodyne-abs_rel_gt=0.094.ckpt"]
 
 
-             //"program": "${workspaceFolder}/scripts/train.py",             
+             "program": "${workspaceFolder}/scripts/train_fbnet.py",             
             //  "args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H.yaml"]
 
-             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H.yaml"]
+             "args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H_fbnet.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet.yaml"]
 
             //"program": "${workspaceFolder}/scripts/flops.py"       
 
 
-            "program": "${workspaceFolder}/scripts/infer.py",             
-             "args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_kitti_cmt_H-2021.12.20-00h43m09s/epoch=18_kitti-eigen_val_files-velodyne-abs_rel_gt=0.094.ckpt",
-            "--input=/home/sj/kitti_odo/sequences/09/image_2",
-            "--output=/home/sj/kitti_odo_result/",
-            "--save=png"]
+            // "program": "${workspaceFolder}/scripts/infer.py",             
+            //  "args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_kitti_cmt_H-2021.12.20-00h43m09s/epoch=18_kitti-eigen_val_files-velodyne-abs_rel_gt=0.094.ckpt",
+            // "--input=/home/sj/kitti_odo/sequences/09/image_2",
+            // "--output=/home/sj/kitti_odo_result/",
+            // "--save=png"]
 
         }
     ]

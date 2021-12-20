@@ -122,7 +122,34 @@ def flip_batch_input(batch):
         batch[key][:, 0, 2] = batch['rgb'].shape[3] - batch[key][:, 0, 2]
     # Return flipped batch
     return batch
+def flip_batch_input_fbnet(batch):
+    """
+    Flip batch input information (copies data first)
 
+    Parameters
+    ----------
+    batch : dict
+        Batch information
+
+    Returns
+    -------
+    batch : dict
+        Flipped batch
+    """
+    # Flip tensors
+    for key in filter_dict(batch, [
+        'rgb', 'rgb_context',
+        'input_depth', 'input_depth_context', 'inv_depths'
+    ]):
+        batch[key] = flip(batch[key], flip_lr)
+    # Flip intrinsics
+    for key in filter_dict(batch, [
+        'intrinsics'
+    ]):
+        batch[key] = batch[key].clone()
+        batch[key][:, 0, 2] = batch['rgb'].shape[3] - batch[key][:, 0, 2]
+    # Return flipped batch
+    return batch
 
 def flip_output(output):
     """

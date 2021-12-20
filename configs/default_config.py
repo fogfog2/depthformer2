@@ -62,6 +62,10 @@ cfg.model.optimizer.depth = CN()
 cfg.model.optimizer.depth.lr = 0.0002           # Depth learning rate
 cfg.model.optimizer.depth.betas = (0.9,0.999)
 cfg.model.optimizer.depth.weight_decay = 0.0    # Dept weight decay
+cfg.model.optimizer.depth_feedback = CN()
+cfg.model.optimizer.depth_feedback.lr = 0.0002           # Depth learning rate
+cfg.model.optimizer.depth_feedback.betas = (0.9,0.999)
+cfg.model.optimizer.depth_feedback.weight_decay = 0.0    # Dept weight decay
 cfg.model.optimizer.pose = CN()
 cfg.model.optimizer.pose.lr = 0.0002            # Pose learning rate
 cfg.model.optimizer.pose.weight_decay = 0.0     # Pose weight decay
@@ -116,6 +120,14 @@ cfg.model.depth_net.name = ''               # Depth network name
 cfg.model.depth_net.checkpoint_path = ''    # Depth checkpoint filepath
 cfg.model.depth_net.version = ''            # Depth network version
 cfg.model.depth_net.dropout = 0.0           # Depth network dropout
+########################################################################################################################
+### MODEL.DEPTH_NET
+########################################################################################################################
+cfg.model.depth_net_feedback = CN()
+cfg.model.depth_net_feedback.name = ''               # Depth network name
+cfg.model.depth_net_feedback.checkpoint_path = ''    # Depth checkpoint filepath
+cfg.model.depth_net_feedback.version = ''            # Depth network version
+cfg.model.depth_net_feedback.dropout = 0.0           # Depth network dropout
 ########################################################################################################################
 ### MODEL.POSE_NET
 ########################################################################################################################
