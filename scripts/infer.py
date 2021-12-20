@@ -28,17 +28,17 @@ def parse_args():
     parser.add_argument('--checkpoint', type=str, help='Checkpoint (.ckpt)')
     parser.add_argument('--input', type=str, help='Input file or folder')
     parser.add_argument('--output', type=str, help='Output file or folder')
-    parser.add_argument('--image_shape', type=int, nargs='+', default=None,
-                        help='Input and output image shape '
-                             '(default: checkpoint\'s config.datasets.augmentation.image_shape)')
+    #parser.add_argument('--image_shape', type=int, nargs='+', default=None,
+    #                    help='Input and output image shape '
+    #                         '(default: checkpoint\'s config.datasets.augmentation.image_shape)')
     parser.add_argument('--half', action="store_true", help='Use half precision (fp16)')
     parser.add_argument('--save', type=str, choices=['npz', 'png'], default=None,
                         help='Save format (npz or png). Default is None (no depth map is saved).')
     args = parser.parse_args()
     assert args.checkpoint.endswith('.ckpt'), \
         'You need to provide a .ckpt file as checkpoint'
-    assert args.image_shape is None or len(args.image_shape) == 2, \
-        'You need to provide a 2-dimensional tuple as shape (H,W)'
+    #assert args.image_shape is None or len(args.image_shape) == 2, \
+    #    'You need to provide a 2-dimensional tuple as shape (H,W)'
     assert (is_image(args.input) and is_image(args.output)) or \
            (not is_image(args.input) and not is_image(args.input)), \
         'Input and output must both be images or folders'
@@ -116,7 +116,7 @@ def main(args):
     config, state_dict = parse_test_file(args.checkpoint)
 
     # If no image shape is provided, use the checkpoint one
-    image_shape = args.image_shape
+    image_shape = [192,640]
     if image_shape is None:
         image_shape = config.datasets.augmentation.image_shape
 
