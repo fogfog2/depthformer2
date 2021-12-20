@@ -189,3 +189,90 @@ class Camera(nn.Module):
 
         # Return pixel coordinates
         return torch.stack([Xnorm, Ynorm], dim=-1).view(B, H, W, 2)
+
+
+    def project2(self, X, frame='w'):
+        """
+        Projects 3D points onto the image plane
+
+        Parameters
+        ----------
+        X : torch.Tensor [B,3,H,W]
+            3D points to be projected
+        frame : 'w'
+            Reference frame: 'c' for camera and 'w' for world
+
+        Returns
+        -------
+        points : torch.Tensor [B,H,W,2]
+            2D projected points that are within the image boundaries
+        """
+        B, C, H, W = X.shape
+        assert C == 3
+
+        # Project 3D points onto the camera image plane
+        if frame == 'c':
+            Xc = self.K.bmm(X.view(B, 3, -1))
+        elif frame == 'w':
+            Xc = self.K.bmm((self.Tcw @ X).view(B, 3, -1))
+        else:
+            raise ValueError('Unknown reference frame {}'.format(frame))
+
+        # Normalize points
+        X = Xc[:, 0]
+        Y = Xc[:, 1]
+        Z = Xc[:, 2].clamp(min=1e-5)
+        Xnorm = 2 * (X / Z) / (W - 1) - 1.
+        Ynorm = 2 * (Y / Z) / (H - 1) - 1.
+
+        # Clamp out-of-bounds pixels
+        # Xmask = ((Xnorm > 1) + (Xnorm < -1)).detach()
+        # Xnorm[Xmask] = 2.
+        # Ymask = ((Ynorm > 1) + (Ynorm < -1)).detach()
+        # Ynorm[Ymask] = 2.
+
+        # Return pixel coordinates
+        return torch.stack([Xnorm, Ynorm], dim=-1).view(B, H, W, 2), Z
+
+    def project_inv(self, X, frame='w'):
+        """
+        Projects 3D points onto the image plane
+
+        Parameters
+        ----------
+        X : torch.Tensor [B,3,H,W]
+            3D points to be projected
+        frame : 'w'
+            Reference frame: 'c' for camera and 'w' for world
+
+        Returns
+        -------
+        points : torch.Tensor [B,H,W,2]
+            2D projected points that are within the image boundaries
+        """
+        B, C, H, W = X.shape
+        assert C == 3
+
+        # Project 3D points onto the camera image plane
+        if frame == 'c':
+            Xc = self.K.bmm(X.view(B, 3, -1))
+        elif frame == 'w':
+            Xc = self.K.bmm((self.Twc @ X).view(B, 3, -1))
+        else:
+            raise ValueError('Unknown reference frame {}'.format(frame))
+
+        # Normalize points
+        X = Xc[:, 0]
+        Y = Xc[:, 1]
+        Z = Xc[:, 2].clamp(min=1e-5)
+        Xnorm = 2 * (X / Z) / (W - 1) - 1.
+        Ynorm = 2 * (Y / Z) / (H - 1) - 1.
+
+        # Clamp out-of-bounds pixels
+        # Xmask = ((Xnorm > 1) + (Xnorm < -1)).detach()
+        # Xnorm[Xmask] = 2.
+        # Ymask = ((Ynorm > 1) + (Ynorm < -1)).detach()
+        # Ynorm[Ymask] = 2.
+
+        # Return pixel coordinates
+        return torch.stack([Xnorm, Ynorm], dim=-1).view(B, H, W, 2), Z
