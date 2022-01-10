@@ -3,7 +3,7 @@
 import torch.nn as nn
 from functools import partial
 
-from packnet_sfm.networks.layers.resnet.resnet_encoder import ResnetEncoder
+from packnet_sfm.networks.layers.resnet.resnet_encoder_depth import ResnetEncoder
 from packnet_sfm.networks.layers.resnet.depth_decoder import DepthDecoder
 from packnet_sfm.networks.layers.resnet.layers import disp_to_depth
 
