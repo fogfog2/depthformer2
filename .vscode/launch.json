@@ -16,7 +16,7 @@
 
             "program": "${workspaceFolder}/scripts/train.py",             
              //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H.yaml"]
-             "args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet_attention.yaml"]
+             "args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H_attention.yaml"]
             // "program": "${workspaceFolder}/scripts/train_fbnet.py",             
             //  "args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H.yaml"]
 
