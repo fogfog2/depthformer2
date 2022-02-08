@@ -58,9 +58,12 @@ class CMT(t.nn.Module):
         #     sizes = [72, 36, 18, 9]
         # else:
         #     raise Exception('No other input sizes!')
-        input_width = 640
-        input_height = 192
-
+        # input_width = 640
+        # input_height = 192
+        
+        input_width = 256
+        input_height = 256
+        
 
         widths = [int(input_width/4), int(input_width/8), int(input_width/16), int(input_width/32)]
         heights = [int(input_height/4), int(input_height/8), int(input_height/16), int(input_height/32)]

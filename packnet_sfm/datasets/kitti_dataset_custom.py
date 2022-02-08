@@ -173,7 +173,6 @@ class CustomDataset(Dataset):
 ########################################################################################################################
 #### DEPTH
 ########################################################################################################################
-
     def _read_depth(self, depth_file):
         """Get the depth map from a file."""
         if depth_file.endswith('.npz'):
@@ -409,15 +408,14 @@ class CustomDataset(Dataset):
                 'rgb_context': image_context
             })
             # Add context poses
-            if self.with_pose:
-                first_pose = sample['pose']
-                image_context_pose = [self._get_pose(f) for f in image_context_paths]
-                image_context_pose = [invert_pose_numpy(context_pose) @ first_pose
-                                      for context_pose in image_context_pose]
-                sample.update({
-                    'pose_context': image_context_pose
-                })
-
+            # if self.with_pose:
+            #     first_pose = sample['pose']
+            #     image_context_pose = [self._get_pose(f) for f in image_context_paths]
+            #     image_context_pose = [invert_pose_numpy(context_pose) @ first_pose
+            #                           for context_pose in image_context_pose]
+            #     sample.update({
+            #         'pose_context': image_context_pose
+            #     })
         # Apply transformations
         if self.data_transform:
             sample = self.data_transform(sample)
