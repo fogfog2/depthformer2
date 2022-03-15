@@ -265,7 +265,10 @@ class PatchMerging(nn.Module):
     def __init__(self, dim, norm_layer=nn.LayerNorm):
         super().__init__()
         self.dim = dim
-        self.reduction = nn.Linear(4 * dim, 2 * dim, bias=False)
+        if dim==64:
+            self.reduction = nn.Linear(4 * dim, 3 * dim, bias=False)
+        else:
+            self.reduction = nn.Linear(4 * dim, 2 * dim, bias=False)
         self.norm = norm_layer(4 * dim)
 
     def forward(self, x, H, W):
@@ -548,6 +551,7 @@ class SwinTransformer(nn.Module):
             self.layers.append(layer)
 
         self.downsample = PatchMerging(dim=int(in_channels[0]), norm_layer=norm_layer)
+        #self.downsample = PatchMerging(dim=int(in_channels[0]), norm_layer=norm_layer)
         num_features = [int(embed_dim * 2 ** i) for i in range(self.num_layers)]
         self.num_features = num_features
         # add a norm layer for each output
@@ -623,7 +627,9 @@ class SwinTransformer(nn.Module):
         # out = x_out.view(-1, H, W, self.init_dim).permute(0, 3, 1, 2).contiguous()
         # outs = []
         # outs.append(out)
-        Wh, Ww = 48,160
+        
+        # Wh, Ww = 48,160
+        Wh, Ww = 64,64
         x = x.flatten(2).transpose(1, 2)
         if self.downsample is not None:
             x = self.downsample(x, Wh, Ww)

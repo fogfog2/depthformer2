@@ -58,7 +58,8 @@ class DepthResNetSwin(nn.Module):
         self.num_heads =num_heads
         self.drop_path_rate = drop_path_rate
         self.ape = ape       
-        self.in_channels=[ self.embed_dim , self.embed_dim*2, self.embed_dim * 4, self.embed_dim * 8]         
+        #self.in_channels=[ self.embed_dim , self.embed_dim*2, self.embed_dim * 4, self.embed_dim * 8]         
+        self.in_channels=[ 64 , self.embed_dim*2, self.embed_dim * 4, self.embed_dim * 8]         
         init_dim = 96
         self.de_channels=[64, 64,  self.embed_dim*2, self.embed_dim * 4, self.embed_dim * 8]      
 
@@ -81,12 +82,13 @@ class DepthResNetSwin(nn.Module):
         (4 scales if training and 1 if not).
         """
         resnet_out = self.resnet_encoder(rgb)
-        out = self.upconv(resnet_out[-1])
-        swin_out = self.swin(out)
+        #out = self.upconv(resnet_out[-1])
+        #swin_out = self.swin(out)
+        swin_out = self.swin(resnet_out[-1])
 
         x = resnet_out + swin_out
 
-        x = self.decoder(x)
+        x = self.decoder(x) 
         disps = [x[('disp', i)] for i in range(4)]
 
         if self.training:
