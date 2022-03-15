@@ -49,8 +49,8 @@ def save_depth(batch, output, args, dataset, save):
         length = rgb.shape[0]
         save.depth.npz=False
         save.depth.rgb=False
-        save.depth.viz=False
-        
+        save.depth.viz=True
+        save.depth.png=False
         for i in range(length):
             # Save numpy depth maps
             if save.depth.npz:
@@ -67,5 +67,5 @@ def save_depth(batch, output, args, dataset, save):
                 write_image('{}/{}_rgb.png'.format(save_path, filename[i]), rgb_i)
             # Save inverse depth visualizations
             if save.depth.viz:
-                viz_i = viz_inv_depth(pred_inv_depth[i]) * 255
+                viz_i = viz_inv_depth(pred_inv_depth[i],colormap='magma') * 255
                 write_image('{}/{}_viz.png'.format(save_path, filename[i]), viz_i)
