@@ -19,8 +19,8 @@
              //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet_attention.yaml"]
 //             "program": "${workspaceFolder}/scripts/train_fbnet.py",      
             "program": "${workspaceFolder}/scripts/train.py",                    
-            "args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H.yaml"]
-            //"args": ["/home/sj/src/depthformer2/configs/overfit_custom_swin.yaml"]
+            "args": ["/home/sj/src/depthformer2/configs/overfit_custom_resnet.yaml"]
+            //"args": ["/home/sj/src/depthformer2/configs/overfit_custom_resnet.yaml"]
              //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H_fbnet.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet.yaml"]
