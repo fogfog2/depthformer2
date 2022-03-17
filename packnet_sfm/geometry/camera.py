@@ -146,6 +146,37 @@ class Camera(nn.Module):
         # If none of the above
         else:
             raise ValueError('Unknown reference frame {}'.format(frame))
+        
+    def reconstruct2(self, depth, frame='w'):
+        """
+        Reconstructs pixel-wise 3D points from a depth map.
+
+        Parameters
+        ----------
+        depth : torch.Tensor [B,1,H,W]
+            Depproject : torch.tensor [B,3,H,W]
+            Pixel-wise 3D points
+        """
+        C, H, W = depth.shape
+        assert C == 1
+
+        # Create flat index grid
+        grid = image_grid(1, H, W, depth.dtype, depth.device, normalized=False)  # [B,3,H,W]
+        flat_grid = grid.view(1, 3, -1)  # [B,3,HW]
+
+        # Estimate the outward rays in the camera frame
+        xnorm = (self.Kinv.bmm(flat_grid)).view(1, 3, H, W)
+        # Scale rays to metric depth
+        Xc = xnorm * depth
+        # If in camera frame of reference
+        if frame == 'c':
+            return Xc
+        # If in world frame of reference
+        elif frame == 'w':
+            return self.Twc @ Xc , xnorm
+        # If none of the above
+        else:
+            raise ValueError('Unknown reference frame {}'.format(frame))
 
     def project(self, X, frame='w'):
         """
