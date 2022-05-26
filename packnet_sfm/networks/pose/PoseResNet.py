@@ -40,15 +40,15 @@ class PoseResNet(nn.Module):
         """
         outputs = []
 
-        # for i, ref_img in enumerate(ref_imgs):
-        #     inputs = torch.cat([target_image, ref_img], 1)
-        #     axisangle, translation = self.decoder([self.encoder(inputs)])
-        #     outputs.append(torch.cat([translation[:, 0], axisangle[:, 0]], 2))
+        for i, ref_img in enumerate(ref_imgs):
+            inputs = torch.cat([target_image, ref_img], 1)
+            axisangle, translation = self.decoder([self.encoder(inputs)])
+            outputs.append(torch.cat([translation[:, 0], axisangle[:, 0]], 2))
 
-        #for i, ref_img in enumerate(ref_imgs):
-        inputs = torch.cat([target_image, ref_imgs], 1)
-        axisangle, translation = self.decoder([self.encoder(inputs)])
-        outputs.append(torch.cat([translation[:, 0], axisangle[:, 0]], 2))
+    
+        # inputs = torch.cat([target_image, ref_imgs], 1)
+        # axisangle, translation = self.decoder([self.encoder(inputs)])
+        # outputs.append(torch.cat([translation[:, 0], axisangle[:, 0]], 2))
 
 
         pose = torch.cat(outputs, 1)
