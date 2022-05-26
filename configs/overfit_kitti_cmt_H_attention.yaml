@@ -1,5 +1,5 @@
 arch:
-    max_epochs: 100
+    max_epochs: 40
 checkpoint:
     save_top_k: 5
     monitor : 'abs_rel_gt'
@@ -31,7 +31,7 @@ datasets:
     augmentation:
         image_shape: (192, 640)
     train:
-        batch_size: 4
+        batch_size: 8
         dataset: ['KITTI']
         path: ['/home/sj/kitti']
         split: ['eigen_zhou_files.txt']

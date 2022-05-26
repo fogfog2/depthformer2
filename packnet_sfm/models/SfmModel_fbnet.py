@@ -171,7 +171,7 @@ class SfmModel(BaseModel):
 
 
         flag_flip_lr = random.random() < self.flip_lr_prob if self.training else force_flip
-
+        flag_flip_lr = False
         # Generate inverse depth predictions
         depth_output = self.compute_depth_net(batch, force_flip=flag_flip_lr)
 

@@ -10,16 +10,20 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "env": {"PYTHONPATH": "${cwd}" },
-            // "program": "${workspaceFolder}/scripts/eval.py",             
-            // "args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_custom_cmt_H_attention-2022.02.08-11h52m24s/epoch=27_colon-val_files-abs_rel_gt=0.082.ckpt"]
+            //"program": "${workspaceFolder}/scripts/eval.py",             
+            //"args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_custom_cmt_H_attention-2022.03.15-16h45m27s/epoch=30_colon-val_files-abs_rel_gt=0.082.ckpt"]
+            //"args": ["--checkpoint=/home/sj/Documents/ResNet18_MR_selfsup_K.ckpt"]
+             //"program": "${workspaceFolder}/scripts/eval_fbnet.py",             
+             //"args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_custom_resnet_fbnet-2022.03.15-21h38m03s/epoch=30_colon-val_files-abs_rel_gt=0.182.ckpt"]
             "program": "${workspaceFolder}/scripts/train.py",             
-            "args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H_attention.yaml"]
+            //"program": "${workspaceFolder}/scripts/train_fbnet.py",             
+            //  "args": ["/home/sj/src/depthformer2/configs/overfit_custom_resnet_fbnet.yaml"]
              //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet_attention.yaml"]
 //             "program": "${workspaceFolder}/scripts/train_fbnet.py",      
             // "program": "${workspaceFolder}/scripts/train.py",                    
-            // "args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H.yaml"]
+             //"args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H_attention.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/overfit_custom_swin.yaml"]
-             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H_fbnet.yaml"]
+             "args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H_attention.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet.yaml"]
 

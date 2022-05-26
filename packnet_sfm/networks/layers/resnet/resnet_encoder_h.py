@@ -80,6 +80,10 @@ class ResnetEncoder(nn.Module):
         else:
             self.encoder = resnets[num_layers](pretrained)
 
+        self.layer2 = self.encoder.layer2
+        self.layer3 = self.encoder.layer3
+        self.layer4 = self.encoder.layer4
+        
         if num_layers > 34:
             self.num_ch_enc[1:] *= 4
 
