@@ -3,7 +3,7 @@
 import torch.nn as nn
 from functools import partial
 
-from packnet_sfm.networks.layers.resnet.resnet_encoder_h import ResnetEncoder
+from packnet_sfm.networks.layers.resnet.resnet_encoder_h_depth import ResnetEncoder
 from packnet_sfm.networks.depth.cmt_origin_cascade_h import CMT, CMT_Ti,CMT_XS, CMT_XS2, CMT_B, CMT_Layer
 from packnet_sfm.networks.layers.resnet.depth_decoder_attention import DepthDecoder
 from packnet_sfm.networks.layers.resnet.layers import disp_to_depth

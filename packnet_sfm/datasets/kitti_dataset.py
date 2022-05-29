@@ -105,7 +105,6 @@ class KITTIDataset(Dataset):
         self.calibration_cache = {}
         self.imu2velo_calib_cache = {}
         self.sequence_origin_cache = {}
-        file_list = "/home/sj/kitti/eigen_zhou_files.txt"
         with open(file_list, "r") as f:
             data = f.readlines()
 
