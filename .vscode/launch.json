@@ -17,19 +17,22 @@
              //"program": "${workspaceFolder}/scripts/eval_fbnet.py",             
              //"args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_custom_resnet_fbnet-2022.03.15-21h38m03s/epoch=30_colon-val_files-abs_rel_gt=0.182.ckpt"]
             //"program": "${workspaceFolder}/scripts/train.py",             
-            "program": "${workspaceFolder}/scripts/train_fbnet.py",             
+            //"program": "${workspaceFolder}/scripts/train_fbnet.py",             
             //"args": ["/home/sj/src/depthformer2/configs/overfit_custom_resnet_fbnet.yaml"]
              //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet_attention.yaml"]
 //             "program": "${workspaceFolder}/scripts/train_fbnet.py",      
             // "program": "${workspaceFolder}/scripts/train.py",                    
-            "args": ["/home/sj/src/depthformer2/configs/overfit_custom_cmt_H_attention_fbnet.yaml"]
+            //"args": ["/home/sj/src/depthformer2/result/default_config-overfit_custom_cmt_H_attention_fbnet-2022.05.29-15h30m29s/epoch=30_colon-val_files-abs_rel_gt=0.120.ckpt"]
             //"args": ["/home/sj/src/depthformer2/configs/overfit_custom_swin.yaml"]
              //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_cmt_H_attention.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/overfit_kitti_swin_H.yaml"]
             //"args": ["/home/sj/src/depthformer2/configs/train_kitti_resnet.yaml"]
 
-            //"program": "${workspaceFolder}/scripts/flops.py"       
 
+            "program": "${workspaceFolder}/scripts/train.py", 
+            "args": ["/home/sj/src/depthformer2/configs/overfit_custom_resnet.yaml"]    
+
+            //"program": "${workspaceFolder}/scripts/flops.py"       
 
             // "program": "${workspaceFolder}/scripts/infer.py",             
             //  "args": ["--checkpoint=/home/sj/src/depthformer2/result/default_config-overfit_kitti_cmt_H-2021.12.20-00h43m09s/epoch=18_kitti-eigen_val_files-velodyne-abs_rel_gt=0.094.ckpt",
