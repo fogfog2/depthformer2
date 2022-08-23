@@ -22,10 +22,10 @@ model:
         step_size: 5
         gamma: 0.5
     depth_net:
-        name: 'DepthResNetCMTAttention'
+        name: 'DepthResNetCMT'
         version: '18pt'
     depth_net_feedback:
-        name: 'DepthResNetCMTAttention'
+        name: 'DepthResNetCMT'
         version: '18pt'
     pose_net:
         name: 'PoseResNet'
@@ -51,4 +51,3 @@ datasets:
         dataset: ['custom']
         path: ['/home/sj/colon']
         split: ['test_files.txt']
-

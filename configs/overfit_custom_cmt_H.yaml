@@ -8,14 +8,14 @@ model:
     optimizer:
         name: 'AdamW'
         depth:
-            lr: 0.00006
+            lr: 0.0002
             betas: (0.9, 0.999)
             weight_decay: 0.01
         pose:
             lr: 0.0002
     scheduler:
         name: 'StepLR'
-        step_size: 30
+        step_size: 5
         gamma: 0.5
     depth_net:
         name: 'DepthResNetCMT'
@@ -35,10 +35,12 @@ datasets:
         path: ['/home/sj/colon']
         split: ['train_files.txt']
     validation:
+        batch_size: 8
         dataset: ['custom']
         path: ['/home/sj/colon']
-        split: ['val_files.txt']  
+        split: ['test_files.txt']   
     test:
+        batch_size: 8
         dataset: ['custom']
         path: ['/home/sj/colon']
         split: ['test_files.txt']

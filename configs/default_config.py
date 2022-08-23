@@ -41,12 +41,12 @@ cfg.save.depth.png = False               # Flag for saving png depth maps
 ### WANDB
 ########################################################################################################################
 cfg.wandb = CN()
-cfg.wandb.dry_run = True                                 # Wandb dry-run (not logging)
-cfg.wandb.name = ''                                      # Wandb run name
-cfg.wandb.project = os.environ.get("WANDB_PROJECT", "")  # Wandb project
-cfg.wandb.entity = os.environ.get("WANDB_ENTITY", "")    # Wandb entity
+cfg.wandb.dry_run = False                                 # Wandb dry-run (not logging)
+cfg.wandb.name = 'test'                                      # Wandb run name
+cfg.wandb.project = os.environ.get("WANDB_PROJECT", "depthformer_pc1")  # Wandb project
+cfg.wandb.entity = os.environ.get("WANDB_ENTITY", "fogfog2")    # Wandb entity
 cfg.wandb.tags = []                                      # Wandb tags
-cfg.wandb.dir = ''                                       # Wandb save folder
+cfg.wandb.dir = '/home/sj/log'                                       # Wandb save folder
 ########################################################################################################################
 ### MODEL
 ########################################################################################################################
